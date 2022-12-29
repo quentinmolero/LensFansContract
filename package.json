@@ -1,0 +1,25 @@
+{
+  "name": "lensfanscontract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentinmolero/LensFansContract.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quentinmolero/LensFansContract/issues"
+  },
+  "homepage": "https://github.com/quentinmolero/LensFansContract#readme",
+  "devDependencies": {
+    "hardhat": "^2.12.4"
+  },
+  "dependencies": {
+    "@lit-protocol/contracts-sdk": "^2.0.40"
+  }
+}
