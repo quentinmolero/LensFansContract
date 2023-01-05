@@ -20,6 +20,9 @@
     "hardhat": "^2.12.4"
   },
   "dependencies": {
-    "@lit-protocol/contracts-sdk": "^2.0.40"
+    "@lit-protocol/contracts-sdk": "^2.0.40",
+    "@openzeppelin/contracts": "^4.8.0",
+    "@truffle/hdwallet-provider": "^2.1.4",
+    "dotenv": "^16.0.3"
   }
 }
