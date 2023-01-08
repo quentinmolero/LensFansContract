@@ -59,7 +59,7 @@ contract("UnlockableNFT", function(accounts) {
         const unlockableNFT = await UnlockableNFT.new();
         await unlockableNFT.createNFT("publicUrl1", "privateUrl1", 1000, { from: owner });
         try {
-            await unlockableNFT.getPrivateUrl(0, buyer);
+            await unlockableNFT.getPrivateUrl(0, { from: buyer });
             assert.fail("getPrivateUrl should have thrown an error");
         } catch (error) {
             assert.include(error.message, "NFT not unlocked for user", "Incorrect error message");
@@ -70,7 +70,7 @@ contract("UnlockableNFT", function(accounts) {
         const unlockableNFT = await UnlockableNFT.new();
         await unlockableNFT.createNFT("publicUrl1", "privateUrl1", 1000, { from: owner });
         await unlockableNFT.unlock(0, { from: buyer, value: 1000 });
-        const privateUrl = await unlockableNFT.getPrivateUrl(0, buyer);
+        const privateUrl = await unlockableNFT.getPrivateUrl(0, { from: buyer });
         assert.equal(privateUrl, "privateUrl1", "Incorrect private URL");
     });
 
@@ -79,7 +79,7 @@ contract("UnlockableNFT", function(accounts) {
         await unlockableNFT.createNFT("publicUrl1", "privateUrl1", 1000, { from: owner });
         await unlockableNFT.unlock(0, { from: buyer, value: 1000 });
         try {
-            await unlockableNFT.getPrivateUrl(0, user);
+            await unlockableNFT.getPrivateUrl(0, { from: user });
             assert.fail("getPrivateUrl should have thrown an error");
         } catch (error) {
             assert.include(error.message, "NFT not unlocked for user", "Incorrect error message");

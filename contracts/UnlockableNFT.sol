@@ -15,7 +15,7 @@ contract UnlockableNFT {
         uint price;
     }
 
-    function createNFT(string memory publicUrl, string memory privateUrl, uint price) public {
+    function createNFT(string memory publicUrl, string memory privateUrl, uint price) public payable {
         numNFTs++;
         metadata[numNFTs - 1] = UnlockableNFTMetadata(msg.sender, publicUrl, price);
         privateUrls[numNFTs - 1] = privateUrl;
@@ -32,9 +32,9 @@ contract UnlockableNFT {
         unlocks[nftId][msg.sender] = true;
     }
 
-    function getPrivateUrl(uint nftId, address user) public view returns (string memory) {
+    function getPrivateUrl(uint nftId) public view returns (string memory) {
         require(nftId < numNFTs, "NFT does not exist");
-        require(unlocks[nftId][user], "NFT not unlocked for user");
+        require(unlocks[nftId][msg.sender], "NFT not unlocked for user");
 
         return privateUrls[nftId];
     }
